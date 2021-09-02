@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <script src='../dist/index.js'></script>-->
+</head>
+<body>
+<img id='one' src="" alt="" style="width: 50px; height:50px">
+<img id='two' src="" alt="" style="width: 50px; height:50px">
+<script type="module">
+    import { iconColorChangeUtil } from "../index.js";
+    // svg
+    const iconBase = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUgNS43OTJDNS4yNjEzMyA1Ljc5MiA1LjUwNCA1LjcyNjY3IDUuNzI4IDUuNTk2QzUuOTUyIDUuNDY1MzMgNi4xMjkzMyA1LjI5MjY3IDYuMjYgNS4wNzhDNi4zOTA2NyA0Ljg1NCA2LjQ1NiA0LjYxMTMzIDYuNDU2IDQuMzVDNi40NTYgNC4wODg2NyA2LjM5MDY3IDMuODQ2IDYuMjYgMy42MjJDNi4xMjkzMyAzLjM5OCA1Ljk1MiAzLjIyMDY3IDUuNzI4IDMuMDlDNS41MDQgMi45NTkzMyA1LjI2MTMzIDIuODk0IDUgMi44OTRDNC43Mzg2NyAyLjg5NCA0LjQ5NiAyLjk1OTMzIDQuMjcyIDMuMDlDNC4wNTczMyAzLjIyMDY3IDMuODg0NjcgMy4zOTggMy43NTQgMy42MjJDMy42MjMzMyAzLjg0NiAzLjU1OCA0LjA4ODY3IDMuNTU4IDQuMzVDMy41NTggNC43NTEzMyAzLjY5OCA1LjA5MiAzLjk3OCA1LjM3MkM0LjI1OCA1LjY1MiA0LjU5ODY3IDUuNzkyIDUgNS43OTJaTTUgMC4yNzZDNS43NDY2NyAwLjI3NiA2LjQzMjY3IDAuNDU3OTk5IDcuMDU4IDAuODIxOTk5QzcuNjc0IDEuMTg2IDguMTY0IDEuNjc2IDguNTI4IDIuMjkyQzguODkyIDIuOTE3MzMgOS4wNzQgMy42MDMzMyA5LjA3NCA0LjM1QzkuMDc0IDQuOTE5MzMgOC45MzQgNS41NzI2NyA4LjY1NCA2LjMxQzguNDExMzMgNi45MzUzMyA4LjA3NTMzIDcuNjEyIDcuNjQ2IDguMzRDNy4yOTEzMyA4LjkxODY3IDYuODg1MzMgOS41MjA2NyA2LjQyOCAxMC4xNDZDNi4xMTA2NyAxMC41ODQ3IDUuNzc0NjcgMTEuMDE0IDUuNDIgMTEuNDM0TDUgMTEuOTI0TDQuNTggMTEuNDM0QzQuMjI1MzMgMTEuMDE0IDMuODg5MzMgMTAuNTg0NyAzLjU3MiAxMC4xNDZDMy4xMTQ2NyA5LjUyMDY3IDIuNzA4NjcgOC45MTg2NyAyLjM1NCA4LjM0QzEuOTI0NjcgNy42MTIgMS41ODg2NyA2LjkzNTMzIDEuMzQ2IDYuMzFDMS4wNjYgNS41NzI2NyAwLjkyNiA0LjkxOTMzIDAuOTI2IDQuMzVDMC45MjYgMy42MDMzMyAxLjEwOCAyLjkxNzMzIDEuNDcyIDIuMjkyQzEuODM2IDEuNjc2IDIuMzI2IDEuMTg2IDIuOTQyIDAuODIxOTk5QzMuNTY3MzMgMC40NTc5OTkgNC4yNTMzMyAwLjI3NiA1IDAuMjc2WiIgZmlsbD0iI0Y4QkJCQiIvPgo8L3N2Zz4K';
+    // png
+    // const iconBase = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAvCAYAAACG2RgcAAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMsSURBVHgBzZjdcdpAEMd3hbDNm11BSAckFVgZG8ZviRuw4wbsuIFAB3YFdhpIePMMMBapAKcC1AHMOB6I9bHZE5DhQ+JWQmjyexFzrO7+2tvbvTuA/wSElJBt7489r4JEH7mTN2QYlX+dEg0JYAhEv/h3d7dWa+r6SyxkZNtldN0rMIwzHmhf9BLikAdqBoVCo2RZTqQJCFEeePW8S/7SOmwAD1jfMc1btKzhUrue0Au+b7MHypAFiA4VCta8d7RCftt2xZyIkE2DnKFBZO1Uq09aIVsUsSImVkjm0xHHdJqMWAPXrW9dhILHQM+7i/TIqNU6R8Q7yJFIj6BhfIWcMZcbRu32Ycop6XIWddQPQizz4xASsCKERZxzAEECuuR5n0snJ8584+jhoYymeScVtDLiuN3u8aMieZkFN/eOjj6tM+F4u+d4OwMNCzEy4DQuFsHTQK77RWc2LhavQBXAJEL2uJqCEA7o7vJ0RHHANYXr063OzoCUBETfxLaITzqb1EKSUAwCR2eTXkiCJe4jamvVohDPc0AISoNaoVKCvr9FePkO+CGptkMyzXdxO64ZYfH0vD5oiJoabWBN2VfVWQ0E60SoCi5gRQgvtZ8gRVVOHui10zmjSQ6aNKuNdadzyf/1pLG0MjWq1nCj6CtWe0NnJhASEllUEsRJZkQuX0kmzJpIIWPTvIGciRRyMDlzdCEnuDrfx2ZWnp4G5ETguo1YIaXj4y7k4BXlDVXF19aaPLyivKGea4UorxDRPWyJmTe0QkJ8v0GCHVYaZt4QCZkqzjyvUBA05nd4ov1ImFeItBVUroL6pVqtPt8kEhLuOxEvICN40NOINhkqcHnvuXnGJbqZXUWkEqL4w1dPG00Rv7v78hKZEpLfoU22CY9p3uUT4du4I0jizfM0415DQpZXyTKprzd5z6K8Ykls+XDe261W36+zSX2cYDdfcKIb6A2pH/j+qc4stZCpm7UDsDeuJUfTjU56YS1aUxhVXEhunRWpY2Secav1nSvY4vUE4g++stB6bEYmZ99RsXixkF9Uvnh+TpSJM/FIKEbdEBUKj6EO3/8giYt5/gJdKGmdC/+4fwAAAABJRU5ErkJggg=='
+    const one = document.getElementById('one');
+    one.src = iconBase;
+    console.log(iconColorChangeUtil, 'iconColorChangeUtil');
+    const toColor = 'rgba(255,0,0,0.2)';
+    iconColorChangeUtil({
+        iconUrl: iconBase,
+        newColor: toColor,
+        width: 100, // 自定义转换宽度
+        height: 100, // 自定义转换高度
+        type: 'data-png',
+        callback: (data) => {
+            console.log(data, 'data')
+            const two = document.getElementById('two');
+            two.src = data;
+        },
+    })
+</script>
+
+</body>
+</html>
