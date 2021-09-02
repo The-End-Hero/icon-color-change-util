@@ -1,6 +1,6 @@
 {
   "name": "icon-color-change-util",
-  "version": "0.0.7",
+  "version": "0.0.7-beta.1",
   "main": "dist/index.js",
   "author": "wangxiping",
   "license": "MIT",
