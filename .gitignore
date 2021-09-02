@@ -12,7 +12,6 @@ package-lock.json
 
 # production
 /build
-/dist
 /.tmp
 
 # misc
