@@ -2,7 +2,7 @@ interface iconColorChangeUtilProps {
     iconUrl: string;
     newColor: string;
     type: 'data-png' | string;
-    callback?: Function;
+    callback?: (data: ImageData | string) => void;
     width?: number;
     height?: number;
 }

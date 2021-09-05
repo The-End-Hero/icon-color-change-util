@@ -1,7 +1,28 @@
 {
   "include": ["index.ts"],
+  "exclude": [
+    "node_modules",
+  ],
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "tslib" : ["/node_modules/tslib/tslib.d.ts"]
+    },
     "outDir": "dist",
-    "declaration": true
+    "declaration": true,
+    "importHelpers": true,
+    "noEmit": false,
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "checkJs": false,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
+    "strictNullChecks": false,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
   }
 }

@@ -2,12 +2,13 @@ interface iconColorChangeUtilProps {
   iconUrl: string;
   newColor: string;
   type: 'data-png' | string;
-  callback?: Function;
+  callback?: (data: ImageData | string) => void;
   width?: number;
   height?: number;
 }
 const iconColorChangeUtil = (props: iconColorChangeUtilProps) => {
-  let { iconUrl, newColor, type, callback, width, height } = props || {};
+  const { iconUrl, newColor, width, height } = props;
+  let { type, callback } = props;
   if (!callback && typeof type == 'function') {
     callback = type;
     type = 'image-data';
@@ -81,10 +82,10 @@ const iconColorChangeUtil = (props: iconColorChangeUtilProps) => {
     canvas.height = iconElement.height;
     changeColor(newColor, 1);
     if (type === 'data-png') {
-      const dataURL = canvas.toDataURL('image/png', 1);
+      const dataURL: string = canvas.toDataURL('image/png', 1);
       callback?.(dataURL);
     } /* if (type == 'image-data') */ else {
-      const imageData = context?.getImageData(0, 0, canvas.width, canvas.height);
+      const imageData: ImageData = context?.getImageData(0, 0, canvas.width, canvas.height);
       callback?.(imageData);
     }
     iconElement.remove();
