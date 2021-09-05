@@ -1,7 +1,9 @@
-index.js
+index.ts
+index-back.js
 .idea/
 demo/
 yarn.lock
 babel.config.js
 .prettierrc
 .eslintrc.js
+tsconfig.json

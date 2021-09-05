@@ -1,10 +1,19 @@
-const iconColorChangeUtil = (props) => {
+interface iconColorChangeUtilProps {
+  iconUrl: string;
+  newColor: string;
+  type: 'data-png' | string;
+  callback?: Function;
+  width?: number;
+  height?: number;
+}
+const iconColorChangeUtil = (props: iconColorChangeUtilProps) => {
   let { iconUrl, newColor, type, callback, width, height } = props || {};
   if (!callback && typeof type == 'function') {
     callback = type;
     type = 'image-data';
   }
-  let canvas, context;
+  let canvas: HTMLCanvasElement;
+  let context: CanvasRenderingContext2D | null;
   getContext();
   const iconElement = document.createElement('img');
   iconElement.addEventListener('load', imageReady);
@@ -26,11 +35,12 @@ const iconColorChangeUtil = (props) => {
   }
 
   function desaturate() {
+    if (!context) return;
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height),
       pixels = imageData.data;
     let i, l, r, g, b, a, average;
 
-    for (i = 0, l = pixels.length; i < l; i += 4) {
+    for (i = 0, l = pixels?.length; i < l; i += 4) {
       a = pixels[i + 3];
       if (a === 0) {
         continue;
@@ -47,7 +57,8 @@ const iconColorChangeUtil = (props) => {
     context.putImageData(imageData, 0, 0);
   }
 
-  function colorize(color, alpha) {
+  function colorize(color: string, alpha: number) {
+    if (!context) return;
     context.globalCompositeOperation = 'source-atop';
     context.globalAlpha = alpha;
     context.fillStyle = color;
@@ -57,10 +68,10 @@ const iconColorChangeUtil = (props) => {
     context.globalAlpha = 1.0;
   }
 
-  function changeColor(color, alpha) {
+  function changeColor(color: string, alpha: number) {
     getContext();
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(iconElement, 0, 0, canvas.width, canvas.height);
+    context?.clearRect(0, 0, canvas.width, canvas.height);
+    context?.drawImage(iconElement, 0, 0, canvas.width, canvas.height);
     desaturate();
     colorize(color, alpha);
   }
@@ -70,9 +81,11 @@ const iconColorChangeUtil = (props) => {
     canvas.height = iconElement.height;
     changeColor(newColor, 1);
     if (type === 'data-png') {
-      callback(canvas.toDataURL('image/png', 1));
+      const dataURL = canvas.toDataURL('image/png', 1);
+      callback?.(dataURL);
     } /* if (type == 'image-data') */ else {
-      callback(context.getImageData(0, 0, canvas.width, canvas.height));
+      const imageData = context?.getImageData(0, 0, canvas.width, canvas.height);
+      callback?.(imageData);
     }
     iconElement.remove();
   }
