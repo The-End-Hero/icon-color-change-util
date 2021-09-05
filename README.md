@@ -18,10 +18,14 @@ iconColorChangeUtil({
     // width: 100, // 自定义转换宽度
     // height: 100, // 自定义转换高度
     type: 'data-png',
-    callback: (data) => {
-        // 转换后base64
-        console.log(data, 'data')
-    },
+    // callback: (data) => {
+    //     // 转换后base64
+    //     console.log(data, 'data')
+    // },
+}).then((data)=>{
+  console.log(data);
+  const two = document.getElementById('two');
+  two.src = data;
 })
 
 ```

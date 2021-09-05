@@ -25,11 +25,15 @@
         width: 100, // 自定义转换宽度
         height: 100, // 自定义转换高度
         type: 'data-png',
-        callback: (data) => {
-            console.log(data, 'data')
-            const two = document.getElementById('two');
-            two.src = data;
-        },
+        // callback: (data) => {
+        //     console.log(data, 'data')
+        //     const two = document.getElementById('two');
+        //     two.src = data;
+        // },
+    }).then((data)=>{
+        console.log(data);
+        const two = document.getElementById('two');
+        two.src = data;
     })
 </script>
 
