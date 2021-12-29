@@ -6,6 +6,6 @@ interface iconColorChangeUtilProps {
     width?: number;
     height?: number;
 }
-declare const iconColorChangeUtil: (props: iconColorChangeUtilProps) => void;
+declare const iconColorChangeUtil: (props: iconColorChangeUtilProps) => Promise<unknown>;
 export { iconColorChangeUtil };
 export default iconColorChangeUtil;

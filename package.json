@@ -6,7 +6,7 @@
   "author": "wangxiping",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && ./node_modules/.bin/rollup -c rollup.config.js",
+    "build": "rimraf dist && rimraf demo/index.js && ./node_modules/.bin/rollup -c rollup.config.js",
     "lint-fix": "eslint --fix index.ts"
   },
   "devDependencies": {

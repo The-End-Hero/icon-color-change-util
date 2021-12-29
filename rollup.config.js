@@ -3,17 +3,18 @@ import resolve from '@rollup/plugin-node-resolve';
 import { babel } from '@rollup/plugin-babel';
 import typescript from '@rollup/plugin-typescript';
 import { uglify } from 'rollup-plugin-uglify';
-// import pkg from './package.json'
 
 export default [
   {
     input: './index.ts',
-    output: {
-      exports: 'named',
-      format: 'umd',
-      name: 'iconColorChangeUtil',
-      dir: `dist`,
-    },
+    output: [
+      {
+        exports: 'named',
+        format: 'umd',
+        name: 'iconColorChangeUtil',
+        dir: `dist`,
+      },
+    ],
     plugins: [resolve(), typescript({ tsconfig: 'tsconfig.json' }), babel(), commonjs(), uglify()],
     onwarn(warning) {
       // 跳过某些警告
