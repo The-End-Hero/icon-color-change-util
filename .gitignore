@@ -30,7 +30,7 @@ yarn-error.log*
 /.idea
 /.vscode
 storybook-static
-docs
+#docs
 .history
 .version_change.txt
 /**.bak

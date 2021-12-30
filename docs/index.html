@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iconColorChangeUtil-test</title>
+    <script src='./index.js'></script>
+</head>
+<body>
+<img id='one' src="" alt="" style="width: 50px; height:50px">
+<img id='two' src="" alt="" style="width: 50px; height:50px">
+<script type="module">
+    console.log(iconColorChangeUtil.default, 'iconColorChangeUtil');
+    const iconBase = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUgNS43OTJDNS4yNjEzMyA1Ljc5MiA1LjUwNCA1LjcyNjY3IDUuNzI4IDUuNTk2QzUuOTUyIDUuNDY1MzMgNi4xMjkzMyA1LjI5MjY3IDYuMjYgNS4wNzhDNi4zOTA2NyA0Ljg1NCA2LjQ1NiA0LjYxMTMzIDYuNDU2IDQuMzVDNi40NTYgNC4wODg2NyA2LjM5MDY3IDMuODQ2IDYuMjYgMy42MjJDNi4xMjkzMyAzLjM5OCA1Ljk1MiAzLjIyMDY3IDUuNzI4IDMuMDlDNS41MDQgMi45NTkzMyA1LjI2MTMzIDIuODk0IDUgMi44OTRDNC43Mzg2NyAyLjg5NCA0LjQ5NiAyLjk1OTMzIDQuMjcyIDMuMDlDNC4wNTczMyAzLjIyMDY3IDMuODg0NjcgMy4zOTggMy43NTQgMy42MjJDMy42MjMzMyAzLjg0NiAzLjU1OCA0LjA4ODY3IDMuNTU4IDQuMzVDMy41NTggNC43NTEzMyAzLjY5OCA1LjA5MiAzLjk3OCA1LjM3MkM0LjI1OCA1LjY1MiA0LjU5ODY3IDUuNzkyIDUgNS43OTJaTTUgMC4yNzZDNS43NDY2NyAwLjI3NiA2LjQzMjY3IDAuNDU3OTk5IDcuMDU4IDAuODIxOTk5QzcuNjc0IDEuMTg2IDguMTY0IDEuNjc2IDguNTI4IDIuMjkyQzguODkyIDIuOTE3MzMgOS4wNzQgMy42MDMzMyA5LjA3NCA0LjM1QzkuMDc0IDQuOTE5MzMgOC45MzQgNS41NzI2NyA4LjY1NCA2LjMxQzguNDExMzMgNi45MzUzMyA4LjA3NTMzIDcuNjEyIDcuNjQ2IDguMzRDNy4yOTEzMyA4LjkxODY3IDYuODg1MzMgOS41MjA2NyA2LjQyOCAxMC4xNDZDNi4xMTA2NyAxMC41ODQ3IDUuNzc0NjcgMTEuMDE0IDUuNDIgMTEuNDM0TDUgMTEuOTI0TDQuNTggMTEuNDM0QzQuMjI1MzMgMTEuMDE0IDMuODg5MzMgMTAuNTg0NyAzLjU3MiAxMC4xNDZDMy4xMTQ2NyA5LjUyMDY3IDIuNzA4NjcgOC45MTg2NyAyLjM1NCA4LjM0QzEuOTI0NjcgNy42MTIgMS41ODg2NyA2LjkzNTMzIDEuMzQ2IDYuMzFDMS4wNjYgNS41NzI2NyAwLjkyNiA0LjkxOTMzIDAuOTI2IDQuMzVDMC45MjYgMy42MDMzMyAxLjEwOCAyLjkxNzMzIDEuNDcyIDIuMjkyQzEuODM2IDEuNjc2IDIuMzI2IDEuMTg2IDIuOTQyIDAuODIxOTk5QzMuNTY3MzMgMC40NTc5OTkgNC4yNTMzMyAwLjI3NiA1IDAuMjc2WiIgZmlsbD0iI0Y4QkJCQiIvPgo8L3N2Zz4K';
+    const one = document.getElementById('one');
+    one.src = iconBase;
+    const toColor = 'rgb(102,185,146)';
+    iconColorChangeUtil.default({
+        iconUrl: iconBase,
+        newColor: toColor,
+        width: 100, // 自定义转换宽度
+        height: 100, // 自定义转换高度
+        type: 'data-png',
+    }).then((data)=>{
+        console.log(data);
+        const two = document.getElementById('two');
+        two.src = data;
+    })
+</script>
+
+</body>
+</html>
