@@ -6,14 +6,37 @@
     <script src="./index.js"></script>
     <script src="./layui/layui.js"></script>
     <link rel="stylesheet" href="./layui/css/layui.css" />
+    <style>
+      .root {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .action{
+          height: 68px;
+      }
+      .icons{
+          display: flex;
+      }
+    </style>
   </head>
   <body>
-    <button type="button" class="layui-btn" id="upload">
-      <i class="layui-icon">&#xe67c;</i>upload svg/png
-    </button>
-    <div id="colorpicker"></div>
-    <img id="one" src="" alt="" style="width: 50px; height: 50px" />
-    <img id="two" src="" alt="" style="width: 50px; height: 50px" />
+    <div class="root">
+      <div class='action'>
+        <button type="button" class="layui-btn" id="upload">
+          <i class="layui-icon">&#xe67c;</i>upload svg/png
+        </button>
+        <div id="colorpicker"></div>
+      </div>
+      <div class='icons'>
+        <img id="one" src="" alt="" style="width: 50px; height: 50px" />
+        <textarea name="" id="one-textarea" cols="30" rows="10"></textarea>
+        <img id="two" src="" alt="" style="width: 50px; height: 50px" />
+        <textarea name="" id="two-textarea" cols="30" rows="10"></textarea>
+      </div>
+    </div>
 
     <script type="module">
       let iconBase =
@@ -35,6 +58,8 @@
             console.log(data);
             const two = document.getElementById('two');
             two.src = data;
+            document.getElementById('one-textarea').innerHTML = iconBase;
+            document.getElementById('two-textarea').innerHTML = data;
           });
       };
 

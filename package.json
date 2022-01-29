@@ -7,6 +7,7 @@
   "license": "MIT",
   "homepage": "https://the-end-hero.github.io/icon-color-change-util/",
   "scripts": {
+    "preinstall": "npx please-use-yarn",
     "build": "rimraf dist && rimraf docs/index.js && ./node_modules/.bin/rollup -c rollup.config.js && yarn copy",
     "copy": "node copy.js",
     "lint-fix": "eslint --fix index.ts"
