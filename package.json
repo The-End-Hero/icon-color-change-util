@@ -7,7 +7,8 @@
   "license": "MIT",
   "homepage": "https://the-end-hero.github.io/icon-color-change-util/",
   "scripts": {
-    "build": "rimraf dist && rimraf docs/index.js && ./node_modules/.bin/rollup -c rollup.config.js",
+    "build": "rimraf dist && rimraf docs/index.js && ./node_modules/.bin/rollup -c rollup.config.js && yarn copy",
+    "copy": "node copy.js",
     "lint-fix": "eslint --fix index.ts"
   },
   "devDependencies": {
@@ -20,6 +21,7 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.1",
+    "fs-extra": "^10.0.0",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.3",
