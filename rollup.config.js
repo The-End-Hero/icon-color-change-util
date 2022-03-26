@@ -2,7 +2,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import { babel } from '@rollup/plugin-babel';
 import typescript from '@rollup/plugin-typescript';
-import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 
 export default [
   {
@@ -15,7 +15,7 @@ export default [
         dir: `dist`,
       },
     ],
-    plugins: [resolve(), typescript({ tsconfig: 'tsconfig.json' }), babel(), commonjs(), uglify()],
+    plugins: [resolve(), typescript({ tsconfig: 'tsconfig.json' }), babel(), commonjs(), terser()],
     onwarn(warning) {
       // 跳过某些警告
       if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return;
